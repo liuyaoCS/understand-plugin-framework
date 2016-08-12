@@ -18,6 +18,8 @@ public class BinderHookHandler implements InvocationHandler {
     private static final String TAG = "BinderHookHandler";
 
     // 原始的Service对象 (IInterface)
+    //传递过来的是IBinder，之所以这里直接用Object引用，是因为 this.base = asInterfaceMethod.invoke(null, base);
+    //复制之后得到的是Stub.Proxy对象，也就是IInterface的实现类
     Object base;
 
     public BinderHookHandler(IBinder base, Class<?> stubClass) {
